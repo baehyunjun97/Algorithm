@@ -1,0 +1,30 @@
+package test;
+
+import java.util.Stack;
+
+public class Main {
+
+	public static void main(String[] args) {
+		System.out.println(solution(13));
+	}
+
+	// 10진수를 2진수로 바꾼다.
+	public static String solution(int dec) {
+
+		//변환방법 : dec를 2로 나눈 나머지, 즉 %2 값을 stack에 저장. 몫이 0이 될 때까지 진행
+		Stack<Integer> stack  = new Stack<Integer>();
+		
+		while(0 < dec) {
+			int bin = dec%2;
+			stack.add(bin);
+			dec /= 2;
+		}
+		
+		//스트링빌더에 값 저장 후 toString으로 반환
+		StringBuilder answer = new StringBuilder();
+		while(!stack.isEmpty()) {
+			answer.append(stack.pop());
+		}
+		return answer.toString();
+	}
+}
